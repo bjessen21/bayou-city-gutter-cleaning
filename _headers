@@ -5,3 +5,6 @@
 
 /assets/*
   Cache-Control: public, max-age=300, must-revalidate
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
