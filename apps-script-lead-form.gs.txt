@@ -1,0 +1,17 @@
+/**
+ * Bayou City Gutter Cleaning - lead form backend (Google Apps Script Web App).
+ * SETUP: create a Google Sheet (row 1 headers: Time, Name, Phone, Address, Service, Message, Page).
+ * Extensions > Apps Script > paste this > Deploy > New deployment > Web app (Execute as: Me, Access: Anyone) >
+ * copy the URL into LEAD_ENDPOINT in assets/site.js. Re-deploy (New version) after any edit.
+ */
+function doPost(e) {
+  var d = e.parameter || {};
+  if (d.website) { return ContentService.createTextOutput('ok'); } // honeypot
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var now = new Date();
+  sheet.appendRow([now, d.name || '', d.phone || '', d.address || '', d.interest || '', d.message || '']);
+  MailApp.sendEmail('barrettjessen21@gmail.com', 'New gutter lead: ' + (d.name || 'Unknown') + ' - Bayou City Gutter Cleaning',
+    'Name: ' + (d.name || '') + '\nPhone: ' + (d.phone || '') + '\nAddress/ZIP: ' + (d.address || '') +
+    '\nService: ' + (d.interest || '') + '\nMessage: ' + (d.message || '') + '\nSubmitted: ' + now);
+  return ContentService.createTextOutput(JSON.stringify({result: 'success'})).setMimeType(ContentService.MimeType.JSON);
+}
