@@ -4,7 +4,8 @@ if(tog&&links){tog.addEventListener('click',function(){var o=links.classList.tog
 document.querySelectorAll('.bc-dd button').forEach(function(b){var m=b.parentElement.querySelector('.bc-menu');if(!m)return;
 b.addEventListener('click',function(e){e.preventDefault();var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});});
 document.addEventListener('click',function(e){document.querySelectorAll('.bc-menu.open').forEach(function(m){if(!m.parentElement.contains(e.target)){m.classList.remove('open');var b=m.parentElement.querySelector('button');if(b)b.setAttribute('aria-expanded','false');}});});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.bc-menu.open').forEach(function(m){m.classList.remove('open');});if(links)links.classList.remove('open');}});+/* Lead form -> Google Apps Script Web App (see apps-script-lead-form.gs.txt). Paste the deployed URL below. */
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.bc-menu.open').forEach(function(m){m.classList.remove('open');});if(links)links.classList.remove('open');}});
+/* Lead form -> Google Apps Script Web App (see apps-script-lead-form.gs.txt). Paste the deployed URL below. */
 var LEAD_ENDPOINT='';
 var PHONE='(713) 555-0138';
 document.querySelectorAll('form.bc-lead').forEach(function(f){var st=f.querySelector('.bc-status');
